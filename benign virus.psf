@@ -405,10 +405,14 @@ $checkboxConfirm_CheckedChanged = {
 
 <# 
 -----------------------DISCLAIMER----------------------------------------------------------
-This script is not a real virus OR Malware, it was developed as part of a 
-cybersecurity academic project at Ohio Mahoning County Career and Technical Center (MCCTC)
-and with that should not be sent to anyone not consenting. Such is unethical and a potential
-Violation of the Computer Fraud and Abuse Act of 1986 (CFAA), please approach responsibly.
+This script is NOT a real virus or malware. It was developed solely as part of a 
+cybersecurity academic project at Ohio Mahoning County Career and Technical Center (MCCTC).
+
+With that in mind, this script should NOT be distributed or executed on systems 
+without explicit consent from the user or owner. Doing so may be unethical and 
+potentially violate the Computer Fraud and Abuse Act of 1986 (CFAA).
+
+Please use responsibly and ethically.
 -----------------------DISCLAIMER-----------------------------------------------------------
 #>
 
