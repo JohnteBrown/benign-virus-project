@@ -404,17 +404,28 @@ $checkboxConfirm_CheckedChanged = {
 }
 
 <# 
------------------------DISCLAIMER----------------------------------------------------------
-This script is NOT a real virus or malware. It was developed solely as part of a 
-cybersecurity academic project at Ohio Mahoning County Career and Technical Center (MCCTC).
+---------------------------- DISCLAIMER ------------------------------
+This script is for educational purposes only and is part of a 
+cybersecurity training project developed by students at the Ohio Mahoning 
+County Career and Technical Center (MCCTC). It is **NOT** a real virus or 
+malware, and it does not cause permanent damage to your system.
 
-With that in mind, this script should NOT be distributed or executed on systems 
-without explicit consent from the user or owner. Doing so may be unethical and 
-potentially violate the Computer Fraud and Abuse Act of 1986 (CFAA).
+The script simulates a set of actions commonly seen in cyberattacks, such as 
+changing system settings and wallpapers, and modifying user language preferences. 
+These actions are meant solely for learning and demonstration purposes in a safe, 
+controlled environment (e.g., virtual machines, labs).
+
+**Important**: This script should **NOT** be executed on any system without explicit 
+permission from the system owner. Unauthorized use may be unethical and could 
+violate laws, such as the Computer Fraud and Abuse Act (CFAA) of 1986.
+
+By running this script, you acknowledge that you are using it in a **safe and 
+controlled environment** and agree to take full responsibility for its execution.
 
 Please use responsibly and ethically.
------------------------DISCLAIMER-----------------------------------------------------------
+----------------------------------------------------------------------
 #>
+
 
 $buttonRun_Click = {
 	if ($checkboxConfirm.Checked -eq $true)

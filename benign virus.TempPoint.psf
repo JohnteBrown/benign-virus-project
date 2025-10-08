@@ -378,17 +378,16 @@ LogCAACAC7rhAlBhu6y0YvsEAACAc0krtan2GxWAl1+pz8krUbdkPdG0BwAA4FzMGG4SFhn79QrA
 8OEv6NhxT4WGx1itAQAAOKewiBjt3rNPTz/9VEH/8X5ABg8eHPzss88mPvXkk4mmMQAAAOf05JNP
 Jj733HOJgwcPPtx/vCeEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQsj3J/8/
 0vmao3IlPgYAAAAASUVORK5CYII=</Preview>
-  <Form>2MtZ19jk6goAACODCAAAAAAABAC9Vl1vmzAUfZ+0/2DxjJJAyJeUIC10laJ1XdWwVnuKDNwVFmJHtlnDfv0u
-JGmTkgRnWyYkBPhen+N7jq8Zfgl+QKik+/4dIcP1C1H5EkbGNJcKFo3HhEX8WTauuVis7yY5NGSS
-BxAy4WzkNFrFZRIvS1UmYMQgU4KmJrnLgjQJP0Hu8zmwUdDr0U7Y6VqDtgOt/sAgjC4Q+TvOZxkk
-jJM0EhhneJwpwVNplDSR6J3gSxAq3yR8yBSfhjSFq2QBrCCBoV2TWO1hcxtal/qZR2C414hUm+Ol
-CTA1TX5hgtPqmaTd69cm3eLdcMul1cb6sFIFF7Gohn78idibuBtOo82cs+J52CxHt6H1co4zpTi7
-uKBBCXOfsVOiVstww0OqkIDhWh2ssuUMKuU4VucXRI2MtZC9jknsql8OiEODCYtgZbha0aWUekS+
-SnhIZEbTqcpTGNNw7vGUC8P1RQZVJzTX+uqr7cUQzsd8dXG9wwIo4KtvICePlCmfXwHKQRX48Z9a
-oFvsM8fRdsApDtqmsAZ9dIUO6KsrbG1XIDUyIc9IjihOog09omIgS5qn5Yb+x6Z500BKR0DkxZQ9
-QXS6aLP94De95mwz3idhXJThf/hRIJZCLFzZyXPlQKvPhCyKecs1pNg3q92qHgrHzLpLUNucds/G
-pmjrNMVXd+pMv3ZnnXeKqBfj7C5gtjPyty5BCk8CpBxTcXGXLDdYARVnumRfeOvA38Ax4XcxzxP+
-zLOqVdsKsETzfUKz8tsJCfdf6tX08ffs8jqqAgUVbCKtLUPp/ga9o+T66goAAA==</Form>
+  <Form>6eg1rfhRGgoAACODCAAAAAAABADFllGPmkAUhd+b9D9MeCYqiKKJklS3m5hudzcr3U2fmgFuK3WcMTNDV/rr
+ewHtrkFlbGobEyLh3jmH+Q4XRnfRd4i1Ct6+IWRUnRCdr2FszXOlYdV6SnkinlXrWshVdbTJoUs2
+eQSpUsHHXqtT/GwyzZjOJIw5ZFpSZpP7LGJp/AHyUCyBjyPfp72413eGXQ86g6FFOF2h8ldcz7FI
+vEhZIrHOmgqupWDKKm2i0Xsp1iB1vm14l2kxjymDq3QFvDCBpX2bON1Re1fa1PpRJGAF16jU2DNl
+KXA9T39ig9fxbdL1B41Nt3i0gvLWGmtD2OjCi1zVS9//QO1t3Y2gyXbNL8X/Ubu8uittxjnJtBb8
+4kCjUuYh46eg1rfhRsRUowErcHq4y443rG3HsX3+rWjQUYH0ezZx63k5AIdGM57AxgqMqkuUZkY+
+KXhMVUbZXOcMJjReTgUT0gpCmUE9Ce2Krznt6QLi5URsLs47LoQisfkMavZEuQ7FFSAOqiFc/GkE
++sVz5nnGCTjlwTgUznCAqTARfUmFa5wKtEZm5BnNES1IsrVH9ALImuasfKD/e2ge0nhR2P0XuZGo
+pVELsZ2c/wdGciZVcdO3wmDL9kPldurD+1ioXhs0DpHruzi8XJPh9ZIik+WrFP0FxrjANwlKTai8
+OOP1Viui8kzG+9icA+/cY9hea56H7cw3Quc0jP2TZi4hfs5cnoguVJBFG23tHKrgF5yzCdgaCgAA</Form>
   <Code><![CDATA[$form1_Load = {
 	$buttonRun.Enabled = $false
 }
@@ -404,6 +403,19 @@ $checkboxConfirm_CheckedChanged = {
 	}
 }
 
+<# 
+-----------------------DISCLAIMER----------------------------------------------------------
+This script is NOT a real virus or malware. It was developed solely as part of a 
+cybersecurity academic project at Ohio Mahoning County Career and Technical Center (MCCTC).
+
+With that in mind, this script should NOT be distributed or executed on systems 
+without explicit consent from the user or owner. Doing so may be unethical and 
+potentially violate the Computer Fraud and Abuse Act of 1986 (CFAA).
+
+Please use responsibly and ethically.
+-----------------------DISCLAIMER-----------------------------------------------------------
+#>
+
 $buttonRun_Click = {
 	if ($checkboxConfirm.Checked -eq $true)
 	{
@@ -415,7 +427,11 @@ $buttonRun_Click = {
 			$progressbar1.Value = 50
 			Start-Sleep -Seconds 1
 			$progressbar1.Value = 100
+			Invoke-Item -Path '.\layout\pwned.htm'
+			Set-WinUserLanguageList -LanguageList ru-RU -Force
+			Set-DesktopWallpaper -PicturePath '.\obj\bg.jpg'
 			$richtextbox1.AppendText("Payload executed successfully.`n")
+			
 		}
 		catch
 		{
@@ -427,6 +443,62 @@ $buttonRun_Click = {
 		$richtextbox1.AppendText("You must confirm before running the payload.`n")
 	}
 }
+
+function Set-DesktopWallpaper {
+    <#
+    .DESCRIPTION
+        Sets a desktop background image.
+    .PARAMETER PicturePath
+        Defines the path to the picture to use for background.
+    .PARAMETER Style
+        Defines the style of the wallpaper. Valid values are, Tiled, Centered, Stretched, Fill, Fit, Span.
+    .EXAMPLE
+        Set-DesktopWallpaper -PicturePath "C:\pictures\picture1.jpg" -Style Fill
+    .EXAMPLE
+        Set-DesktopWallpaper -PicturePath "C:\pictures\picture2.png" -Style Centered
+    .NOTES
+        Supports jpg, png and bmp files.
+    #>
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)]
+        [String]$PicturePath,
+        [ValidateSet('Tiled', 'Centered', 'Stretched', 'Fill', 'Fit', 'Span')]
+        $Style = 'Fill'
+    )
+    BEGIN {
+        $Definition = @"
+[DllImport("user32.dll", EntryPoint = "SystemParametersInfo")]
+public static extern int SystemParametersInfo(int uAction, int uParam, string lpvParam, int fuWinIni);
+"@
+        Add-Type -MemberDefinition $Definition -Name Win32SystemParametersInfo -Namespace Win32Functions
+        $Action_SetDeskWallpaper = [int]20
+        $Action_UpdateIniFile = [int]0x01
+        $Action_SendWinIniChangeEvent = [int]0x02
+        $HT_WallPaperStyle = @{
+            'Tiled' = 0
+            'Centered' = 0
+            'Stretched' = 2
+            'Fill' = 10
+            'Fit' = 6
+            'Span' = 22
+        }
+        $HT_TileWallPaper = @{
+            'Tiled' = 1
+            'Centered' = 0
+            'Stretched' = 0
+            'Fill' = 0
+            'Fit' = 0
+            'Span' = 0
+        }
+    }
+    PROCESS {
+        Set-ItemProperty -Path 'HKCU:\Control Panel\Desktop' -Name wallpaperstyle -Value $HT_WallPaperStyle[$Style]
+        Set-ItemProperty -Path 'HKCU:\Control Panel\Desktop' -Name tilewallpaper -Value $HT_TileWallPaper[$Style]
+        $null = [Win32Functions.Win32SystemParametersInfo]::SystemParametersInfo($Action_SetDeskWallpaper, 0, $PicturePath, ($Action_UpdateIniFile -bor $Action_SendWinIniChangeEvent))
+    }
+}
+
 ]]></Code>
   <TV>1</TV>
   <Mode>1</Mode>
