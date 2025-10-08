@@ -1,4 +1,4 @@
-# Benigh Virus Project
+# Benign Virus Project
 > Please read the requirements below before contributing to the repo.
 > This repo will also be archived upon the completion of the academic project.
 ## Contributor Code Of Conduct (Main Points)
