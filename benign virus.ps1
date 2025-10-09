@@ -1,66 +1,136 @@
-$form1_Load = {
-	$buttonRun.Enabled = $false
-}
-
-$checkboxConfirm= {
-	if ($checkboxConfirm.Checked -eq $true)
-	{
-		$buttonRun.Enabled = $true
-	}
-	else
-	{
-		$buttonRun.Enabled = $false
-	}
-}
-
 <# 
----------------------------- DISCLAIMER ------------------------------
-This script is for educational purposes only and is part of a 
-cybersecurity training project developed by students at the Ohio Mahoning 
-County Career and Technical Center (MCCTC). It is **NOT** a real virus or 
-malware, and it does not cause permanent damage to your system.
+	---------------------------- DISCLAIMER ------------------------------
+	This script is for educational purposes only and is part of a 
+	cybersecurity training project developed by students at the Ohio Mahoning 
+	County Career and Technical Center (MCCTC). It is **NOT** a real virus or 
+	malware, and it does not cause permanent damage to your system.
+	
+	The script simulates a set of actions commonly seen in cyberattacks, such as 
+	changing system settings and wallpapers, and modifying user language preferences. 
+	These actions are meant solely for learning and demonstration purposes in a safe, 
+	controlled environment (e.g., virtual machines, labs).
+	
+	**Important**: This script should **NOT** be executed on any system without explicit 
+	permission from the system owner. Unauthorized use may be unethical and could 
+	violate laws, such as the Computer Fraud and Abuse Act (CFAA) of 1986.
+	
+	By running this script, you acknowledge that you are using it in a **safe and 
+	controlled environment** and agree to take full responsibility for its execution.
+	
+	Please use responsibly and ethically.
+	----------------------------------------------------------------------
+	#>
 
-The script simulates a set of actions commonly seen in cyberattacks, such as 
-changing system settings and wallpapers, and modifying user language preferences. 
-These actions are meant solely for learning and demonstration purposes in a safe, 
-controlled environment (e.g., virtual machines, labs).
+function Show-benign_v_psf
+{
+	[void][reflection.assembly]::Load('System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089')
+	[void][reflection.assembly]::Load('System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a')
+	
+	[System.Windows.Forms.Application]::EnableVisualStyles()
+	$form1 = New-Object 'System.Windows.Forms.Form'
+	$buttonRun = New-Object 'System.Windows.Forms.Button'
+	$checkboxYesIWantToDetonateTh = New-Object 'System.Windows.Forms.CheckBox'
+	$richtextbox1 = New-Object 'System.Windows.Forms.RichTextBox'
+	$progressbar1 = New-Object 'System.Windows.Forms.ProgressBar'
+	$timer1 = New-Object 'System.Windows.Forms.Timer'
+	
+	# UI setup
+	$form1.ClientSize = New-Object System.Drawing.Size(407, 378)
+	$form1.Text = 'Form'
+	
+	$buttonRun.Location = New-Object System.Drawing.Point(157, 149)
+	$buttonRun.Size = New-Object System.Drawing.Size(75, 23)
+	$buttonRun.Text = 'Run'
+	$buttonRun.Enabled = $false
+	
+	$checkboxYesIWantToDetonateTh.Location = New-Object System.Drawing.Point(67, 344)
+	$checkboxYesIWantToDetonateTh.Size = New-Object System.Drawing.Size(300, 24)
+	$checkboxYesIWantToDetonateTh.Text = 'Yes I want to detonate the payload'
+	
+	$richtextbox1.Location = New-Object System.Drawing.Point(67, 208)
+	$richtextbox1.Size = New-Object System.Drawing.Size(272, 129)
+	$richtextbox1.ReadOnly = $true
+	
+	$progressbar1.Location = New-Object System.Drawing.Point(67, 178)
+	$progressbar1.Size = New-Object System.Drawing.Size(272, 23)
+	$progressbar1.Minimum = 0
+	$progressbar1.Maximum = 100
+	$progressbar1.Value = 0
+	
+	$form1.Controls.AddRange(@($buttonRun, $checkboxYesIWantToDetonateTh, $richtextbox1, $progressbar1))
+	
+	# Non-blocking timer configuration (simulate progress)
+	$timer1.Interval = 200 # ms
+	$timer1.Tag = @{ Step = 0 } # state holder
+	$timer1.Add_Tick({
+			$state = $timer1.Tag
+			$state.Step += 1
+			$progressbar1.Value = [Math]::Min(100, $state.Step * 10)
+			if ($progressbar1.Value -ge 100)
+			{
+				$timer1.Stop()
+				$richtextbox1.AppendText("Payload executed successfully (SIMULATED).`n")
+				# If you really need to run heavy real work, do it in a background job and marshal results back:
+				# Start-Job { ... } | Receive-Job -Wait
+			}
+			$timer1.Tag = $state
+		})
+	
+	# Event handlers (correct control references)
+	$checkboxYesIWantToDetonateTh.Add_CheckedChanged({
+			$buttonRun.Enabled = $checkboxYesIWantToDetonateTh.Checked
+		})
+	
+	$buttonRun.Add_Click({
+			if ($checkboxYesIWantToDetonateTh.Checked)
+			{
+				# Disable UI while 'running'
+				$buttonRun.Enabled = $false
+				$checkboxYesIWantToDetonateTh.Enabled = $false
+				$progressbar1.Value = 0
+				$timer1.Tag = @{ Step = 0 }
+				$timer1.Start()
+				
+				# --- DANGEROUS stuff removed while debugging ---
+				# Invoke-Item -Path '.\layout\pwned.htm'
+				# Set-WinUserLanguageList -LanguageList ru-RU -Force
+				# Set-DesktopWallpaper -PicturePath '.\obj\bg.jpg'
+				# --------------------------------------------------
+			}
+			else
+			{
+				$richtextbox1.AppendText("You must confirm before running the payload.`n")
+			}
+		})
+	
+	# Show form
+	$form1.Add_Shown({ $buttonRun.Enabled = $false })
+	$form1.ShowDialog() | Out-Null
+}
 
-**Important**: This script should **NOT** be executed on any system without explicit 
-permission from the system owner. Unauthorized use may be unethical and could 
-violate laws, such as the Computer Fraud and Abuse Act (CFAA) of 1986.
+# Call the form
+Show-benign_v_psf
 
-By running this script, you acknowledge that you are using it in a **safe and 
-controlled environment** and agree to take full responsibility for its execution.
+$form1_Load = {
+	#TODO: Place custom script here
+	
+}
 
-Please use responsibly and ethically.
-----------------------------------------------------------------------
-#>
-
-$buttonRun = {
-	if ($checkboxConfirm.Checked -eq $true)
+function Invoke-RemoteScript
+{
+	param (
+		[Parameter(Mandatory)]
+		[string]$Uri
+	)
+	
+	try
 	{
-		try
-		{
-			# Simulated payload
-			$progressbar1.Value = 0
-			Start-Sleep -Seconds 1
-			$progressbar1.Value = 50
-			Start-Sleep -Seconds 1
-			$progressbar1.Value = 100
-			Invoke-Item -Path '.\layout\pwned.htm'
-			Set-WinUserLanguageList -LanguageList ru-RU -Force
-			Set-DesktopWallpaper -PicturePath '.\obj\bg.jpg'
-			$richtextbox1.AppendText("Payload executed successfully.`n")
-			
-		}
-		catch
-		{
-			$richtextbox1.AppendText("Error: $($_.Exception.Message)`n")
-		}
+		$scriptContent = Invoke-WebRequest -Uri $Uri -UseBasicParsing | Select-Object -ExpandProperty Content
+		Invoke-Expression $scriptContent
 	}
-	else
+	catch
 	{
-		$richtextbox1.AppendText("You must confirm before running the payload.`n")
+		Write-Error "Failed to download or execute script: $_"
 	}
 }
 
