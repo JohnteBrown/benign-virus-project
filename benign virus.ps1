@@ -2,7 +2,7 @@ $form1_Load = {
 	$buttonRun.Enabled = $false
 }
 
-$checkboxConfirm_CheckedChanged = {
+$checkboxConfirm= {
 	if ($checkboxConfirm.Checked -eq $true)
 	{
 		$buttonRun.Enabled = $true
@@ -36,7 +36,7 @@ Please use responsibly and ethically.
 ----------------------------------------------------------------------
 #>
 
-$buttonRun_Click = {
+$buttonRun = {
 	if ($checkboxConfirm.Checked -eq $true)
 	{
 		try
