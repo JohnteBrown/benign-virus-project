@@ -1,5 +1,5 @@
 # Benign Virus Project
-**Hey Please checkout the project [Context Page](https://johntebrown.github.io/benign-virus-project/)!**
+**Hey Please checkout the project [Context Page!](https://johntebrown.github.io/benign-virus-project/)**
 <br>
 
 > read the requirements below before contributing to the repo. 
