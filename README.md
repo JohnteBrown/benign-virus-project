@@ -1,6 +1,7 @@
 # Benign Virus Project
-> Please read the requirements below before contributing to the repo.
+> Please read the requirements below before contributing to the repo. 
 > This repo will also be archived upon the completion of the academic project.
+> additionally PLEASE READ THE FOLLOWING: [DISCLAIMER.md](https://github.com/JohnteBrown/benign-virus-project/blob/master/DISCLAIMER.md) 
 ## Contributor Code Of Conduct (Main Points)
 
 <br>
